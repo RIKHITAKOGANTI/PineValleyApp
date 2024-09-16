@@ -1,0 +1,55 @@
+﻿@model S5G5_PVFAPP.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<body style="background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/Beautiful-Shady-Wood-Desktop-Background.jpg') ">
+    <br />
+    <h2 style="font-family:Georgia;text-align:center">Delete Record</h2>
+    <br />
+    <div style="display:flex;justify-content:center">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerAddress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+            <dt>
+                Are you sure you want to delete the field?
+            </dt><br />
+            <dd>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <input type="submit" value="Delete" class="btn btn-primary" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+
+            
+       
+</body>

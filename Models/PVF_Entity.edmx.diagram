@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8941e7844c004a6f9a490f819540266f" Name="Diagram1">
+        <EntityTypeShape EntityType="PineValleyModel.Customer" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Employee" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Order" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Product" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.ProductLine" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.RawMaterial" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.SalesPerson" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.SalesTerritory" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Skill" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Vendor" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.WorkCenter" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.DoesBusinessIn" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.OrderLine" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Supplies" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.Uses" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PineValleyModel.WorksIn" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="PineValleyModel.FK_DoesBusinessIn_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_WorksIn_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_OrderLine_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_OrderLine_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Product_ProductLine" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Uses_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Supplies_RawMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Uses_RawMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_Supplies_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.FK_WorksIn_WorkCenter" ManuallyRouted="false" />
+        <AssociationConnector Association="PineValleyModel.ProducedIn" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

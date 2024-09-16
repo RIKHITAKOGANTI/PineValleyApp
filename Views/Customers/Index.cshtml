@@ -1,0 +1,59 @@
+﻿@model IEnumerable<S5G5_PVFAPP.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers Data";
+}
+<body style="background-image: url('https://jooinn.com/images/wood-background-72.jpg') ">
+
+    <br />
+    <h2 style="text-align: center; font-family: Georgia">CustomersData</h2>
+    <br />
+    <br />
+
+    <table class="table table-hover table-dark">
+        <tr>
+            <th>CustomerID</th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>1</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button type="button" class="btn btn-outline-dark btn-lg" style="align-content:center">
+                    @Html.ActionLink("Create New", "Create")
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

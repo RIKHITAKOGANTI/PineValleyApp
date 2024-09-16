@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PineValleyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.DoesBusinessIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DoesBusinessIn">
+    <Key>
+      <PropertyRef Name="TerritoryID" />
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="TerritoryID" Type="int" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmployeeAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="SupervisorID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'PineValley.dbo.HasSkill' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="HasSkill">
+          <Property Name="SkillCode" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.OrderLine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderLine">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderedQuantity" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.ProducedIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProducedIn">
+    <Key>
+      <PropertyRef Name="WorkCenterID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="WorkCenterID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductFinish" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductStandardPrice" Type="money" />
+    <Property Name="ProductLineID" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductLine">
+    <Key>
+      <PropertyRef Name="ProductLineID" />
+    </Key>
+    <Property Name="ProductLineID" Type="int" Nullable="false" />
+    <Property Name="ProductLineName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RawMaterial">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialStandardCost" Type="money" />
+    <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SalesPerson">
+    <Key>
+      <PropertyRef Name="SalesPersonID" />
+    </Key>
+    <Property Name="SalesPersonID" Type="int" Nullable="false" />
+    <Property Name="SalesPersonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalesPersonTelephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="SalesPersonFax" Type="nvarchar" MaxLength="50" />
+    <Property Name="TerritoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesTerritory">
+    <Key>
+      <PropertyRef Name="TerritoryID" />
+    </Key>
+    <Property Name="TerritoryID" Type="int" Nullable="false" />
+    <Property Name="TerritoryName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="SkillCode" />
+    </Key>
+    <Property Name="SkillCode" Type="int" Nullable="false" />
+    <Property Name="SkillDescription" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.Supplies' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Supplies">
+    <Key>
+      <PropertyRef Name="VendorID" />
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="VendorID" Type="int" Nullable="false" />
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="SupplyUnitPrice" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.Uses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Uses">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="int" Nullable="false" />
+    <Property Name="VendorName" Type="varchar" MaxLength="50" />
+    <Property Name="VendorAddress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkCenter">
+    <Key>
+      <PropertyRef Name="WorkCenterID" />
+    </Key>
+    <Property Name="WorkCenterID" Type="int" Nullable="false" />
+    <Property Name="WorkCenterLocation" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PineValley.dbo.WorksIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorksIn">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="WorkCenterID" Type="int" />
+  </EntityType>
+  <Association Name="FK_DoesBusinessIn_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="DoesBusinessIn" Type="Self.DoesBusinessIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="DoesBusinessIn">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'PineValley.dbo.HasSkill' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_HasSkill_Employee" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'PineValley.dbo.HasSkill' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_HasSkill_Skill" />-->
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderLine_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProducedIn_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProducedIn" Type="Self.ProducedIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProducedIn">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProducedIn_WorkCenter">
+    <End Role="WorkCenter" Type="Self.WorkCenter" Multiplicity="1" />
+    <End Role="ProducedIn" Type="Self.ProducedIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkCenter">
+        <PropertyRef Name="WorkCenterID" />
+      </Principal>
+      <Dependent Role="ProducedIn">
+        <PropertyRef Name="WorkCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductLine">
+    <End Role="ProductLine" Type="Self.ProductLine" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductLine">
+        <PropertyRef Name="ProductLineID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplies_RawMaterial">
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RawMaterial">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="Supplies">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplies_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="Supplies" Type="Self.Supplies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="Supplies">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uses_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Uses" Type="Self.Uses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Uses">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uses_RawMaterial">
+    <End Role="RawMaterial" Type="Self.RawMaterial" Multiplicity="1" />
+    <End Role="Uses" Type="Self.Uses" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RawMaterial">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="Uses">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorksIn_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="WorksIn" Type="Self.WorksIn" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="WorksIn">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorksIn_WorkCenter">
+    <End Role="WorkCenter" Type="Self.WorkCenter" Multiplicity="0..1" />
+    <End Role="WorksIn" Type="Self.WorksIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkCenter">
+        <PropertyRef Name="WorkCenterID" />
+      </Principal>
+      <Dependent Role="WorksIn">
+        <PropertyRef Name="WorkCenterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PineValleyModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductLine" EntityType="Self.ProductLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RawMaterial" EntityType="Self.RawMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesPerson" EntityType="Self.SalesPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalesTerritory" EntityType="Self.SalesTerritory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkCenter" EntityType="Self.WorkCenter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoesBusinessIn" EntityType="Self.DoesBusinessIn" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DoesBusinessIn].[TerritoryID] AS [TerritoryID], 
+    [DoesBusinessIn].[CustomerID] AS [CustomerID]
+    FROM [dbo].[DoesBusinessIn] AS [DoesBusinessIn]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderLine" EntityType="Self.OrderLine" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OrderLine].[ProductID] AS [ProductID], 
+    [OrderLine].[OrderID] AS [OrderID], 
+    [OrderLine].[OrderedQuantity] AS [OrderedQuantity]
+    FROM [dbo].[OrderLine] AS [OrderLine]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProducedIn" EntityType="Self.ProducedIn" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProducedIn].[WorkCenterID] AS [WorkCenterID], 
+    [ProducedIn].[ProductID] AS [ProductID]
+    FROM [dbo].[ProducedIn] AS [ProducedIn]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Supplies" EntityType="Self.Supplies" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Supplies].[VendorID] AS [VendorID], 
+    [Supplies].[MaterialID] AS [MaterialID], 
+    [Supplies].[SupplyUnitPrice] AS [SupplyUnitPrice]
+    FROM [dbo].[Supplies] AS [Supplies]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Uses" EntityType="Self.Uses" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Uses].[MaterialID] AS [MaterialID], 
+    [Uses].[ProductID] AS [ProductID]
+    FROM [dbo].[Uses] AS [Uses]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorksIn" EntityType="Self.WorksIn" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [WorksIn].[EmployeeID] AS [EmployeeID], 
+    [WorksIn].[WorkCenterID] AS [WorkCenterID]
+    FROM [dbo].[WorksIn] AS [WorksIn]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DoesBusinessIn_Customer" Association="Self.FK_DoesBusinessIn_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="DoesBusinessIn" EntitySet="DoesBusinessIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Order" Association="Self.FK_OrderLine_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderLine" EntitySet="OrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderLine_Product" Association="Self.FK_OrderLine_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderLine" EntitySet="OrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProducedIn_Product" Association="Self.FK_ProducedIn_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProducedIn" EntitySet="ProducedIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProducedIn_WorkCenter" Association="Self.FK_ProducedIn_WorkCenter">
+      <End Role="WorkCenter" EntitySet="WorkCenter" />
+      <End Role="ProducedIn" EntitySet="ProducedIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductLine" Association="Self.FK_Product_ProductLine">
+      <End Role="ProductLine" EntitySet="ProductLine" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplies_RawMaterial" Association="Self.FK_Supplies_RawMaterial">
+      <End Role="RawMaterial" EntitySet="RawMaterial" />
+      <End Role="Supplies" EntitySet="Supplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplies_Vendor" Association="Self.FK_Supplies_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Supplies" EntitySet="Supplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uses_Product" Association="Self.FK_Uses_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Uses" EntitySet="Uses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uses_RawMaterial" Association="Self.FK_Uses_RawMaterial">
+      <End Role="RawMaterial" EntitySet="RawMaterial" />
+      <End Role="Uses" EntitySet="Uses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorksIn_Employee" Association="Self.FK_WorksIn_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="WorksIn" EntitySet="WorksIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorksIn_WorkCenter" Association="Self.FK_WorksIn_WorkCenter">
+      <End Role="WorkCenter" EntitySet="WorkCenter" />
+      <End Role="WorksIn" EntitySet="WorksIn" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

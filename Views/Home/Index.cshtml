@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<body style="background-image: url('https://wallpapercave.com/wp/wp8522334.jpg') ">
+
+    <style>
+        .button {
+            background-color: white;
+            border: unset;
+            width: 150px;
+            height: 50px;
+            font-family: Georgia;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: wavy;
+            display: inline-block;
+            font-size: 23px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+        }
+
+        .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+    </style>
+
+    <div class="jumbotron" style="font-family: 'Baskerville Old Face'; text-align: center; font-size: 60px;">
+        <h1>Services Offered</h1>
+
+    </div>
+
+    <div class="container-fluid bg-3 text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("Customers", "Index", "Customers")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2"> @Html.ActionLink("Employees", "Index", "Employees")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("Orders", "Index", "Orders")</button><br />
+
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("Products", "Index", "Products")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("ProductLines", "Index", "ProductLines")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("RawMaterials", "Index", "RawMaterials")</button><br />
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-4">
+
+                <button class="button button2">@Html.ActionLink("SalesPersons", "Index", "SalesPersons")</button>
+            </div>
+            <div class="col-sm-4">
+
+                <button class="button button2">@Html.ActionLink("Skills", "Index", "Skills")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("Supplies", "Index", "Supplies")</button><br />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("SalesTerritories", "Index", "SalesTerritories")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("Vendors", "Index", "Vendors")</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="button button2">@Html.ActionLink("WorkCenters", "Index", "WorkCenters")</button><br />
+            </div>
+        </div>
+    
+</body>

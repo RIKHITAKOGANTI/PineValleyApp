@@ -1,0 +1,44 @@
+﻿@model S5G5_PVFAPP.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+<body style="background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/Beautiful-Shady-Wood-Desktop-Background.jpg') ">
+    <br />
+    <h2 style="font-family:Georgia;text-align:center">Customer Data</h2>
+    <br />
+
+    <div style="display:flex;justify-content:center">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+
+            <dd class="table-light">
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </dt>
+
+            <dd class="table-light">
+                @Html.DisplayFor(model => model.CustomerAddress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+
+            <dd class="table-light">
+                    @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+            <dd>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p></dd>
+        </dl>
+    </div>
+    
+</body>
